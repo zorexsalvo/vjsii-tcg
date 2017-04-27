@@ -6,7 +6,8 @@
 
   <body>
     <div id="app">
-      <p>{{ getTitle() }} - <a v-bind:href="link">Google</a></p>
+      <h1 v-once>{{ title }}</h1>
+      <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
     </div>
   </body>
 
@@ -18,7 +19,8 @@
      link: "https://google.com"
     },
     methods: {
-      getTitle: function(){
+      sayHello: function(){
+        this.title = "Hello!"
         return this.title;
       }
     }

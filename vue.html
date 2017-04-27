@@ -8,6 +8,8 @@
     <div id="app">
       <h1 v-once>{{ title }}</h1>
       <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+      <hr>
+      <p v-html="finishedLink"></p>
     </div>
   </body>
 
@@ -15,8 +17,9 @@
   new Vue({
     el: "#app",
     data: {
-     title: "Hello World",
-     link: "https://google.com"
+      title: "Hello World",
+      link: "https://google.com",
+      finishedLink: "<a href='http://google.com'>Google<a>"
     },
     methods: {
       sayHello: function(){

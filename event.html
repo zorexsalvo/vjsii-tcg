@@ -10,7 +10,7 @@
     <p>{{ counter }}</p>
     <p v-on:mousemove="updateCoordinates">
 	Coordinates: {{ x }} / {{ y }}
-	- <span v-on:mousemove="dummy">DEAD SPOT</span>
+	- <span v-on:mousemove.stop>DEAD SPOT</span>
     </p>
     </div>
   </body>
@@ -31,9 +31,6 @@
           this.x = event.clientX;
           this.y = event.clientY;
         },
-	dummy: function(event) {
-	  event.stopPropagation();
-      	}
       }
     });
   </script>

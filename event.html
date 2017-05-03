@@ -6,9 +6,12 @@
 
   <body>
     <div id="app">
-    <button v-on:click="increase(2)">Click Me</button>
+    <button v-on:click="increase(2, $event)">Click Me</button>
     <p>{{ counter }}</p>
-    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+    <p v-on:mousemove="updateCoordinates">
+	Coordinates: {{ x }} / {{ y }}
+	- <span v-on:mousemove="dummy">DEAD SPOT</span>
+    </p>
     </div>
   </body>
 
@@ -21,13 +24,16 @@
         y: 0
       },
       methods: {
-        increase: function(step) {
+        increase: function(step, event) {
           this.counter += step;
         },
         updateCoordinates: function(event) {
           this.x = event.clientX;
           this.y = event.clientY;
-        }
+        },
+	dummy: function(event) {
+	  event.stopPropagation();
+      	}
       }
     });
   </script>
